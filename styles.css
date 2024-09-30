@@ -87,7 +87,6 @@ header,footer {
 }
 
 header {
-  grid-area:header;
   background-color:var(--green);
   color:var(--white);
   text-align:center;
@@ -99,13 +98,15 @@ header {
 
 header p {
   font-style:italic;
+  /*font-size:0.75em*/
   font-size:0.5em;
 }
 nav li {
   list-style:none;
+  display:inline-block;
 }
 
-nav a {
+nav ul a {
   background-color:var(--orange);
   color:var(--white); 
   display:block;
@@ -113,6 +114,8 @@ nav a {
   text-decoration:none;
   font-weight:normal;
   font-size:1.25em;
+  border: 2px solid(var--green);
+  border-radius:5px;
   margin:10px;
   padding:10px;
 }
@@ -152,10 +155,30 @@ p {
 p, a {
   line-height:1.25em;
 }
+/*new: 9/30*/
+p small, dl {
+  line-height:1.5em;
+  padding:15px;
+}
 
-#fruits {
+#fruits-for-sale {
   font-size:0.75em;
   text-align:left;
+  display:grid;
+}
+
+#vegetables-for-sale {
+  font-size:0.75em;
+  text-align:left;
+  display:grid;
+}
+
+#fruits-for-sale img {
+  top:0px;
+}
+
+#vegetables-for-sale img {
+  top:0px;
 }
 
 #fruits-for-sale {
@@ -163,46 +186,47 @@ p, a {
   text-align:center;
 }
 
-#vegetables {
-  font-size:0.75em;
-  text-align:left;
+#vegetables-for-sale {
+  font-size:0.5em;
+  text-align:center;
+}
+
+#fruits-for-sale img {
+  position:relative;
+  bottom:50%;
 }
 
 #vegetables-for-sale img {
-  width:1em;
   position:relative;
-  top:10px;
-  right:10px;
+  bottom:50%;
+}
+
+#fruits-for-sale figcaption {
+  background-color:var(--black);
+  color:var(--white);
   padding:1em;
-  z-index:10
+  width:100px;
 }
 
 #vegetables-for-sale figcaption {
   background-color:var(--black);
   color:var(--white);
-  display:block;
-  text-align:center;
-  position:fixed;
-  z-index:100;
   padding:1em;
-}
-
-#contact {
- display:inline-block;
-}
-
-#hours {
- display:inline-block;
-}
-
-footer {
-  grid-area:footer;
-  border-top:2px solid #000000;
+  width:100px;
 }
 
 header, footer {
   background-color:#06A816;
   color:#ffffff;
+}
+
+footer {
+  grid-area:footer;
+  display:grid;
+  border-top:2px solid #000000;
+  padding-top:20px;
+  grid-template-columns:repeat(4,1fr); 
+ }
 }
 
 
@@ -214,82 +238,43 @@ header, footer {
   padding:10px;
 }
 
-/*-------------------- MEDIA QUERY (medium) --------------------------------
-grid-column-start:
-grid-column-end:
-grid-row-start:
-grid-row-end:
-
-position & layout
-use provided breakpoints
-medium: title on side of tagline
-images: 2 x 6
-medium: Contact & Hours sections in row: display-flex;
-easier to have control if you set the body to each media query to the min-width , too
-body at each media query
-*/
+/*-------------------- MEDIA QUERY (medium) --------------------------------*/
   
 @media screen and (min-width:834px) {
 body {
   min-width:834px;
-
-}
-  nav li {
-  /*list-style:none;*/
-  /*display:inline-block;*/
-}
-/*medium: title on side of tagline*/
-
-#fruits-for-sale {
-  display:grid;
 }
 
-#fruits-for-sale img {
-  grid-template-columns: repeat(2,1fr);
-  grid-template-rows: repeat(6,1fr);
-  column-gap:30px;
-  row-gap:10px;
+header {
+  display:flex;
+}
+  
+#fruits {
+  grid-template-columns:repeat(2,1fr);
+}
+  
+#vegetables {
+  grid-template-columns:repeat(2,1fr);
 }
 
-#vegetables-for-sale {
-  display:grid;
-}
-
-#vegetables-for-sale img {
-  grid-template-columns: repeat(2,1fr);
-  grid-template-rows: repeat(6,1fr);
-  column-gap:30px;
-  row-gap:10px;
-}
+footer {
+ grid-template-columns:repeat(4,1fr);  
+ }
 }
 /*-------------------- MEDIA QUERY (large) ------------------------------------
 large: title on tagline, navigation in header on the right, images: 3 x 4, side-by-side: Contact, ContactInfo, Hours, HoursInfo
 */
-  
 @media screen and (min-width:1280px) {
+body {
+  min-width:1280px;
+}
+
+#fruits {
+  grid-template-columns:repeat(3,1fr);
+}
   
-}
-
-#fruits-for-sale {
-  display:grid;
-}
-
-#fruits-for-sale img {
-  grid-template-columns: repeat(3,1fr);
-  grid-template-rows: repeat(4,1fr);
-  column-gap:20px;
-  row-gap:10px;
-}
-
-#vegetables-for-sale {
-  display:grid;
-}
-
-#vegetables-for-sale img {
-  grid-template-columns: repeat(3,1fr);
-  grid-template-rows: repeat(4,1fr);
-  column-gap:20px;
-  row-gap:10px;
+#vegetables {
+  grid-template-columns:repeat(3,1fr);
 }
 /*-------------------- MEDIA QUERY (xl) ---------------------------------------
 x-large: 4 x 3
@@ -298,27 +283,14 @@ Labels: centered, black background, white text
   
 @media screen and (min-width:1440px) {
   
-}
-
-#fruits-for-sale {
-  display:grid;
-}
-
-#fruits-for-sale img {
-  grid-template-columns: repeat(4,1fr);
-  grid-template-rows: repeat(3,1fr);
-  column-gap:10px;
-  row-gap:30px;
-}
-
-#vegetables-for-sale {
-  display:grid;
-}
-
-#vegetables-for-sale img {
-  grid-template-columns: repeat(4,1fr);
-  grid-template-rows: repeat(3,1fr);
-  column-gap:10px;
-  row-gap:30px;
+body {
+  min-width:1440px;
+  }
+#fruits {
+  grid-template-columns:repeat(4,1fr);
 }
   
+#vegetables {
+  grid-template-columns:repeat(4,1fr);
+}
+}
