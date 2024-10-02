@@ -1,6 +1,5 @@
 /* -------------------- IMPORTED FONTS -------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Habibi&family=Irish+Grover&display=swap');
-
 /*-------------------- CSS RESET ---------------------------------------------------*/
   /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -49,10 +48,8 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-  
+} 
 /* -------------------- ROOT VARIABLES ---------------------------------------*/
-
 :root {
   font-family:"Habibi",serif;
   font-size:1.25em;
@@ -61,9 +58,7 @@ table {
   --black:#000000;
   --white:#ffffff;
 }
-  
 /* --------------------GLOBAL STYLES (mobile first/small) --------------------*/
-  
 * {
   box-sizing:border-box;
 }
@@ -74,6 +69,7 @@ html {
 
 body {
   min-width:428px;
+  grid-template-columns:repeat(2,1fr);
 }
 
 main {
@@ -81,62 +77,75 @@ main {
   grid-template-columns:1fr;
 }
 
-header,footer {
-  width:100%;
-  background-color:var(--green);
-}
-
 header {
+  display:flex;
+  flex-direction:column;
   background-color:var(--green);
   color:var(--white);
   text-align:center;
   font-family:"Irish Grover",serif;
-  font-size:1.5em;
   padding:10px;
   margin:0px;
 }
 
 header p {
+  font-size:1em;
   font-style:italic;
-  /*font-size:0.75em*/
-  font-size:0.5em;
+  text-align:center;
 }
-nav li {
-  list-style:none;
-  display:inline-block;
+
+header,footer {
+  background-color:var(--green);
+  color:var(--white);
+}
+
+ul {
+  display:flex;
+  flex-direction:column;
 }
 
 nav ul a {
-  background-color:var(--orange);
-  color:var(--white); 
   display:block;
+  background-color:var(--orange);
+  color:var(--white);
+  font-size:1.25em;
+  width:12em;
   text-align:center;
   text-decoration:none;
-  font-weight:normal;
-  font-size:1.25em;
-  border: 2px solid(var--green);
+  padding:10px 10px;
   border-radius:5px;
-  margin:10px;
-  padding:10px;
+  border: 2.5px solid var(--white); 
+  margin:0 auto;
+  margin-top:20px;
 }
 
-#top {
+#top a {
+  width:3em;
+  height:2.9em;
+  bottom:10px;
+  right:10px;
+  margin:0 auto;
   position:fixed;
-  bottom:0px;
-  right:0px;
-}
+  align-content:center;
+ }
 
 h1 {
   font-size:2.5em;
-  font-weight:bold;
-}
-
+  text-shadow: 2px 2px 5px var(--black);
+} 
+  
 h2 {
   font-size:1.75em;
+  font-family:"Irish Grover",serif;
 }
 
 h3, p {
   font-size:1.25em;
+  font-family:"Irish Grover",serif;
+}
+
+h3 {
+ grid-column: 1 / -1;
 }
 
 h1, h2, h3 {
@@ -155,91 +164,72 @@ p {
 p, a {
   line-height:1.25em;
 }
-/*new: 9/30*/
+
 p small, dl {
   line-height:1.5em;
   padding:15px;
 }
 
 #fruits-for-sale {
-  font-size:0.75em;
-  text-align:left;
-  display:grid;
-}
-
-#vegetables-for-sale {
-  font-size:0.75em;
-  text-align:left;
-  display:grid;
-}
-
-#fruits-for-sale img {
-  top:0px;
-}
-
-#vegetables-for-sale img {
-  top:0px;
-}
-
-#fruits-for-sale {
-  font-size:0.5em;
   text-align:center;
-}
-
-#vegetables-for-sale {
-  font-size:0.5em;
-  text-align:center;
-}
-
-#fruits-for-sale img {
-  position:relative;
-  bottom:50%;
-}
-
-#vegetables-for-sale img {
-  position:relative;
-  bottom:50%;
+  display:grid;
+  grid-template-columns:repeat(1,1fr);
 }
 
 #fruits-for-sale figcaption {
   background-color:var(--black);
   color:var(--white);
+  width:8em;
+  bottom:50%;
+  opacity:85%;
   padding:1em;
-  width:100px;
+  margin:0 auto;
+  position:relative;
+}
+
+#vegetables-for-sale {
+  text-align:center;
+  display:grid;
+  grid-template-columns:repeat(1,1fr);
 }
 
 #vegetables-for-sale figcaption {
   background-color:var(--black);
   color:var(--white);
+  width:8em;
+  bottom:50%;
+  opacity:85%;
   padding:1em;
-  width:100px;
-}
-
-header, footer {
-  background-color:#06A816;
-  color:#ffffff;
+  margin:0 auto;
+  position:relative;
 }
 
 footer {
-  grid-area:footer;
-  display:grid;
-  border-top:2px solid #000000;
+  text-align:center;
   padding-top:20px;
-  grid-template-columns:repeat(4,1fr); 
  }
+
+footer div {
+  display:flex;
+  justify-content:center;
 }
 
+#address {
+  margin-bottom:10px;
+}
+
+#weekly-hours {
+  margin-top:-20px;
+}
 
 #copyright {
   background-color:var(--white);
   color:var(--green);
-  font-size:0.75em;
+  padding:8px;
   text-align:center;
-  padding:10px;
+  grid-column: 1/-1;
 }
-
 /*-------------------- MEDIA QUERY (medium) --------------------------------*/
-  
 @media screen and (min-width:834px) {
 body {
   min-width:834px;
@@ -247,50 +237,128 @@ body {
 
 header {
   display:flex;
-}
-  
-#fruits {
-  grid-template-columns:repeat(2,1fr);
-}
-  
-#vegetables {
-  grid-template-columns:repeat(2,1fr);
+  flex-direction:row;
 }
 
-footer {
- grid-template-columns:repeat(4,1fr);  
+header p {
+  font-size:0.95em;
+  margin-left:5em;
+  align-content:center;
  }
+
+ul {
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
 }
-/*-------------------- MEDIA QUERY (large) ------------------------------------
-large: title on tagline, navigation in header on the right, images: 3 x 4, side-by-side: Contact, ContactInfo, Hours, HoursInfo
-*/
+  
+nav ul a {
+  padding:10px 50px;
+  margin:20px 70px auto;
+}
+  
+#fruits-for-sale {
+ grid-template-columns:repeat(2,1fr);
+}
+  
+#vegetables-for-sale {
+ grid-template-columns:repeat(2,1fr);
+}
+}
+/*-------------------- MEDIA QUERY (large) ------------------------------------*/
 @media screen and (min-width:1280px) {
 body {
   min-width:1280px;
+  display:grid;
 }
 
-#fruits {
+header {
+  display:flex;
+  flex-direction:column;
+}
+  
+header p {
+  margin:0 auto;
+}
+
+main {
+  display:grid;
+  grid-column: 1/-1;
+}
+
+ul {
+  display:flex;
+}
+  
+nav {
+ background-color:var(--green);
+}
+  
+nav ul a {
+  margin:20px 70px auto;
+  padding:10px 50px;
+}
+  
+#fruits-for-sale {
   grid-template-columns:repeat(3,1fr);
 }
   
-#vegetables {
+#vegetables-for-sale {
   grid-template-columns:repeat(3,1fr);
 }
-/*-------------------- MEDIA QUERY (xl) ---------------------------------------
-x-large: 4 x 3
-Labels: centered, black background, white text
-*/
-  
+
+footer {
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ text-align:center;
+ grid-column: 1/-1;
+ }
+}
+/*-------------------- MEDIA QUERY (xl) ------------------------------------*/
 @media screen and (min-width:1440px) {
   
 body {
   min-width:1440px;
   }
-#fruits {
+
+header {
+  display:flex;
+  flex-direction:column;
+}
+  
+header p {
+  margin:0 auto;
+}
+  
+main {
+  display:grid;
+  grid-column: 1/-1;
+}
+  
+ul {
+  display:flex;
+}
+
+nav {
+ background-color:var(--green);
+}
+
+nav ul a {
+  margin:20px 70px auto;
+  padding:10px 50px;
+}
+  
+#fruits-for-sale {
   grid-template-columns:repeat(4,1fr);
 }
   
-#vegetables {
+#vegetables-for-sale {
   grid-template-columns:repeat(4,1fr);
 }
+  
+footer {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-column: 1/-1;
+ }
 }
