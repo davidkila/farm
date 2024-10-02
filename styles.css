@@ -104,19 +104,24 @@ ul {
   flex-direction:column;
 }
 
+nav {
+  margin-top:35px;
+}
+
 nav ul a {
   display:block;
   background-color:var(--orange);
   color:var(--white);
-  font-size:1.25em;
-  width:12em;
+  font-size:1.10em;
+  width:13.5em;
   text-align:center;
   text-decoration:none;
-  padding:10px 10px;
+  padding:7px 10px;
   border-radius:5px;
   border: 2.5px solid var(--white); 
   margin:0 auto;
   margin-top:20px;
+  margin-bottom:-5px;
 }
 
 #top a {
@@ -139,13 +144,23 @@ h2 {
   font-family:"Irish Grover",serif;
 }
 
-h3, p {
-  font-size:1.25em;
-  font-family:"Irish Grover",serif;
+#fruits > h2 {
+  margin-top:50px;
+}
+ 
+#vegetables > h2 {
+ margin-top:23px;
 }
 
 h3 {
- grid-column: 1 / -1;
+grid-column: 1 / -1;
+margin-top:20px;
+margin-bottom:23px;
+}
+
+h3, p {
+  font-size:1.25em;
+  font-family:"Irish Grover",serif;
 }
 
 h1, h2, h3 {
@@ -158,7 +173,7 @@ h1, h2, h3, p, img {
 
 p {
   font-family:"Habibi", serif;
-  line-height:1.5em
+  line-height:1.5em;
 }
 
 p, a {
@@ -176,13 +191,17 @@ p small, dl {
   grid-template-columns:repeat(1,1fr);
 }
 
+#fruits-for-sale img {
+  margin-top:-25px;
+}
+
 #fruits-for-sale figcaption {
   background-color:var(--black);
   color:var(--white);
   width:8em;
   bottom:50%;
-  opacity:85%;
-  padding:1em;
+  opacity:80%;
+  padding:0.80em;
   margin:0 auto;
   position:relative;
 }
@@ -193,13 +212,17 @@ p small, dl {
   grid-template-columns:repeat(1,1fr);
 }
 
+#vegetables-for-sale img {
+  margin-top:-25px;
+}
+ 
 #vegetables-for-sale figcaption {
   background-color:var(--black);
   color:var(--white);
   width:8em;
   bottom:50%;
-  opacity:85%;
-  padding:1em;
+  opacity:80%;
+  padding:0.80em;
   margin:0 auto;
   position:relative;
 }
@@ -214,17 +237,28 @@ footer div {
   justify-content:center;
 }
 
+#contact {
+  grid-area:contact;
+}
+
 #address {
   margin-bottom:10px;
+  grid-area:address;
+}
+
+#hours {
+  grid-area:hours;
 }
 
 #weekly-hours {
   margin-top:-20px;
+  grid-area:weekly-hours;
 }
 
 #copyright {
   background-color:var(--white);
   color:var(--green);
+  font-weight:bold;
   padding:8px;
   text-align:center;
   grid-column: 1/-1;
@@ -245,7 +279,7 @@ header p {
   margin-left:5em;
   align-content:center;
  }
-
+  
 ul {
   display:flex;
   flex-direction:row;
@@ -256,6 +290,10 @@ nav ul a {
   padding:10px 50px;
   margin:20px 70px auto;
 }
+
+#top a {
+  padding:0px;
+}
   
 #fruits-for-sale {
  grid-template-columns:repeat(2,1fr);
@@ -264,6 +302,15 @@ nav ul a {
 #vegetables-for-sale {
  grid-template-columns:repeat(2,1fr);
 }
+  
+footer {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  grid-column: 1/-1;
+  grid-template-areas:
+    "contact hours"
+    "address weekly-hours";
+ }
 }
 /*-------------------- MEDIA QUERY (large) ------------------------------------*/
 @media screen and (min-width:1280px) {
@@ -292,11 +339,16 @@ ul {
   
 nav {
  background-color:var(--green);
+ margin-top:0px;
 }
-  
+
 nav ul a {
   margin:20px 70px auto;
   padding:10px 50px;
+}
+
+#top a {
+  padding:0px;
 }
   
 #fruits-for-sale {
@@ -308,10 +360,11 @@ nav ul a {
 }
 
 footer {
- display:grid;
- grid-template-columns:repeat(4,1fr);
- text-align:center;
- grid-column: 1/-1;
+  display:grid;
+  grid-template-columns:repeat(1,0.5fr);
+  grid-column: 1/-1;
+  grid-template-areas:
+  "contact address hours weekly-hours";
  }
 }
 /*-------------------- MEDIA QUERY (xl) ------------------------------------*/
@@ -319,7 +372,7 @@ footer {
   
 body {
   min-width:1440px;
-  }
+}
 
 header {
   display:flex;
@@ -341,11 +394,16 @@ ul {
 
 nav {
  background-color:var(--green);
+ margin-top:0px;
 }
 
 nav ul a {
   margin:20px 70px auto;
   padding:10px 50px;
+}
+  
+#top a {
+  padding:0px;
 }
   
 #fruits-for-sale {
@@ -358,7 +416,9 @@ nav ul a {
   
 footer {
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(1,0.5fr);
   grid-column: 1/-1;
+  grid-template-areas:
+  "contact address hours weekly-hours";
  }
 }
